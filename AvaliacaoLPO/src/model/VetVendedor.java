@@ -1,3 +1,4 @@
+package model;
 
 public class VetVendedor {
 	private Vendedor[] vetVendedor;

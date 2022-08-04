@@ -1,3 +1,4 @@
+package model;
 
 public class Vendedor {
 	
@@ -42,17 +43,29 @@ public class Vendedor {
 		this.totalVendas = totalVendas;
 	}
 	@Override
+
 	public String toString() {
-		return "Vendedor [nome=" + nome + ", salarioBase=" + salarioBase
+		return "model.Vendedor [nome=" + nome + ", salarioBase=" + salarioBase
 				+ ", tempoServico=" + tempoServico + ", categoria=" + categoria
 				+ ", totalVendas=" + totalVendas + "]";
 	}
 	
-    public static Vendedor incializaVendedor() {
+    public static Vendedor instanciaVendedor(double salarioBase) {
         Vendedor vendedor = new Vendedor();
-        vendedor.setSalarioBase(1500.00);
+        vendedor.setSalarioBase(salarioBase);
         return vendedor;
     }
+
+	public static void defineCategoria(Vendedor vendedor, int tempoServico) {
+		if (tempoServico > 60) {
+			vendedor.setCategoria('A');
+		} else if (tempoServico > 30) {
+			vendedor.setCategoria('B');
+		}  else {
+			vendedor.setCategoria('C');
+		}
+	}
+
 }
 
 
