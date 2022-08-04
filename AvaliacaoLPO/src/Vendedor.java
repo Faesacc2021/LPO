@@ -48,19 +48,10 @@ public class Vendedor {
 				+ ", totalVendas=" + totalVendas + "]";
 	}
 	
-    public static void incializaVendedores() {
+    public static Vendedor incializaVendedor() {
         Vendedor vendedor = new Vendedor();
         vendedor.setSalarioBase(1500.00);
-    }
-    
-    public static void defineCategoria(Vendedor vendedor, int tempoServico) {
-    	if (tempoServico > 60) {
-    		vendedor.setCategoria('A'); 
-    	} else if (tempoServico > 30) {
-    		vendedor.setCategoria('B');
-    	}  else {
-    		vendedor.setCategoria('C');
-    	}
+        return vendedor;
     }
 }
 
