@@ -1,4 +1,4 @@
-# LPO
+# LPOO
 Linguagem Programação Orientada a Objetos
 
 # Este repositório é de estudo e backup daquilo que nos é ensinado na faculdade durante as aulas.
