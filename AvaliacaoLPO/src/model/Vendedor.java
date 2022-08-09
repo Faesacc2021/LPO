@@ -1,5 +1,7 @@
 package model;
 
+import util.Constants;
+
 public class Vendedor {
 	
 	private String nome;
@@ -50,22 +52,11 @@ public class Vendedor {
 				+ ", totalVendas=" + totalVendas + "]";
 	}
 	
-    public static Vendedor instanciaVendedor(double salarioBase) {
+    public static Vendedor instanciaVendedor() {
         Vendedor vendedor = new Vendedor();
-        vendedor.setSalarioBase(salarioBase);
+        vendedor.setSalarioBase(Constants.SALARIO_BASE);
         return vendedor;
     }
-
-	public static void defineCategoria(Vendedor vendedor, int tempoServico) {
-		if (tempoServico > 60) {
-			vendedor.setCategoria('A');
-		} else if (tempoServico > 30) {
-			vendedor.setCategoria('B');
-		}  else {
-			vendedor.setCategoria('C');
-		}
-	}
-
 }
 
 

@@ -1,46 +1,97 @@
 import model.Vendedor;
 import util.Constants;
-
+import java.util.Scanner;
+import model.RegrasVendedor;
 public class Principal {
+	static Scanner ler = new Scanner(System.in);
+	public static int autoIncrement = -1;
+	RegrasVendedor.
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		menuVendedor();
 	}
 
-	public static double getComissao(Vendedor vendedor) {
-		double vendasPercent = 0;
-		double totalVendas = vendedor.getTotalVendas();
+	public static void menuVendedor(){
+		int continuar = 7;
+		String entrada = "";
+		int valorMenu = 0;
 
-		if (totalVendas > 20000) {
-			vendasPercent = Constants.Vendas.MAIOR_VINTE_MIL;
-		} else if (totalVendas > 10000) {
-			vendasPercent = Constants.Vendas.MAIOR_DEZ_MIL;
-		}  else {
-			vendasPercent = Constants.Vendas.MINIMO;
+		while (continuar != 0){
+
+			System.out.println("Escolha uma opção");
+			System.out.println("1 - Incluir Dados do Aluno ");
+			System.out.println("2 - Consultar Nota");
+			System.out.println("3 - Média Aritimética");
+			System.out.println("0 - Finalizar operações");
+			entrada = ler.next();
+
+			try{
+				valorMenu = Integer.parseInt(entrada);
+			} catch (NumberFormatException e) {
+				continue;
+			}
+
+			switch(valorMenu) {
+				case 0:
+					System.out.println("Programa Encerrado ");
+					continuar = 0;
+					break;
+				case 1:
+					incluirAluno();
+					break;
+				case 2:
+					consultaNota();
+					break;
+				case 3:
+					consultaMedia();
+					break;
+				default:
+					System.out.println("Opção Inválida!" );
+			}
 		}
-		return vendasPercent;
 	}
 
-	public static double getGratificacao(Vendedor vendedor) {
-		double percentual = 0;
-		char categoria = vendedor.getCategoria();
+	private static void incluirAluno() {
+		Alunos aluno = new Alunos();
 
-		switch(categoria) {
-			case 'A':
-				percentual = Constants.Categoria.CATEGORIA_A;
-				break;
-			case 'B':
-				percentual = Constants.Categoria.CATEGORIA_B;
-			default:
-				percentual = 1.0;
-		}
-		return (vendedor.getSalarioBase() * percentual / 100);
+		System.out.println("Digite o nome do Aluno: ");
+		ler.nextLine();
+		aluno.setNome(ler.nextLine());
+
+		System.out.println("Digite o Nota 01: ");
+		aluno.setNota01(ler.nextDouble());
+
+		System.out.println("Digite o Nota 02: ");
+		aluno.setNota02(ler.nextDouble());
+
+		autoIncrement = autoIncrement + 1;
+		aluno.setMatricula(autoIncrement);
+		AlunosVet.incluirAlunos(aluno, autoIncrement);
 	}
 
-	public static double getSalario(Vendedor vendedor) {
-		return (vendedor.getSalarioBase() + getComissao(vendedor) + getGratificacao(vendedor));
+	private static void consultaNota() {
+
+		System.out.println("por vafor informe a nota de corte: ");
+		double nota = ler.nextDouble();
+
+		Alunos.consultarAlunos(nota, autoIncrement);
 	}
+
+	private static void consultaMedia() {
+		Alunos.consultarMedia(autoIncrement);
+	}
+
 }
-
-
+Footer
+		© 2022 GitHub, Inc.
+	definir tamanho do vetor
+		getvendedor pos
+		getcount
+		pesquisa
+		insere
+		remove
+		totalvendas
+		quantvendedor
+		mediavendas
+		tiraespaco
