@@ -1,97 +1,80 @@
-import model.Vendedor;
-import util.Constants;
+import model.DadosVendedor;
+import model.VetVendedor;
 import java.util.Scanner;
-import model.RegrasVendedor;
+
 public class Principal {
 	static Scanner ler = new Scanner(System.in);
-	public static int autoIncrement = -1;
-	RegrasVendedor.
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		VetVendedor.defineTamanhoVetor();
 		menuVendedor();
 	}
 
-	public static void menuVendedor(){
+	public static void menuVendedor() {
 		int continuar = 7;
 		String entrada = "";
 		int valorMenu = 0;
 
-		while (continuar != 0){
+		while (continuar != 0) {
 
 			System.out.println("Escolha uma opção");
-			System.out.println("1 - Incluir Dados do Aluno ");
-			System.out.println("2 - Consultar Nota");
-			System.out.println("3 - Média Aritimética");
-			System.out.println("0 - Finalizar operações");
+			System.out.println("1 - Incluir Vendedor");
+			System.out.println("2 - Consultar Vendedor");
+			System.out.println("3 - Excluir Vendedor");
+			System.out.println("4 - Outras Operações");
+			System.out.println("0 - Finalizar");
 			entrada = ler.next();
 
-			try{
+			try {
 				valorMenu = Integer.parseInt(entrada);
 			} catch (NumberFormatException e) {
 				continue;
 			}
 
-			switch(valorMenu) {
-				case 0:
+			switch (valorMenu) {
+				case 0 -> {
 					System.out.println("Programa Encerrado ");
 					continuar = 0;
-					break;
-				case 1:
-					incluirAluno();
-					break;
-				case 2:
-					consultaNota();
-					break;
-				case 3:
-					consultaMedia();
-					break;
-				default:
-					System.out.println("Opção Inválida!" );
+				}
+				case 1 -> DadosVendedor.incluirVendedor();
+				case 2 -> DadosVendedor.consultaVendedor();
+				case 3 -> DadosVendedor.excluiVendedor();
+				case 4 -> OutrasOperacoes();
+				default -> System.out.println("Opção Inválida!");
 			}
 		}
 	}
 
-	private static void incluirAluno() {
-		Alunos aluno = new Alunos();
+	public static void OutrasOperacoes() {
+		int continuar = 7;
+		String entrada = "";
+		int valorMenu = 0;
 
-		System.out.println("Digite o nome do Aluno: ");
-		ler.nextLine();
-		aluno.setNome(ler.nextLine());
+		while (continuar != 0) {
 
-		System.out.println("Digite o Nota 01: ");
-		aluno.setNota01(ler.nextDouble());
+			System.out.println("Escolha uma opção");
+			System.out.println("1 - Total de Vendas");
+			System.out.println("2 - Media Vendas");
+			System.out.println("0 - Finalizar");
+			entrada = ler.next();
 
-		System.out.println("Digite o Nota 02: ");
-		aluno.setNota02(ler.nextDouble());
+			try {
+				valorMenu = Integer.parseInt(entrada);
+			} catch (NumberFormatException e) {
+				continue;
+			}
 
-		autoIncrement = autoIncrement + 1;
-		aluno.setMatricula(autoIncrement);
-		AlunosVet.incluirAlunos(aluno, autoIncrement);
+			switch (valorMenu) {
+				case 0 -> {
+					System.out.println("Programa Encerrado ");
+					continuar = 0;
+				}
+				case 1 -> DadosVendedor.totalVendas();
+				case 2 -> DadosVendedor.mediaVendas();
+				default -> System.out.println("Opção Inválida!");
+			}
+		}
+		menuVendedor();
 	}
-
-	private static void consultaNota() {
-
-		System.out.println("por vafor informe a nota de corte: ");
-		double nota = ler.nextDouble();
-
-		Alunos.consultarAlunos(nota, autoIncrement);
-	}
-
-	private static void consultaMedia() {
-		Alunos.consultarMedia(autoIncrement);
-	}
-
 }
-Footer
-		© 2022 GitHub, Inc.
-	definir tamanho do vetor
-		getvendedor pos
-		getcount
-		pesquisa
-		insere
-		remove
-		totalvendas
-		quantvendedor
-		mediavendas
-		tiraespaco
+

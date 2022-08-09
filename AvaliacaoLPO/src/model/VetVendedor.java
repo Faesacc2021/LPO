@@ -45,14 +45,6 @@ public class VetVendedor {
 	}
 
 	public static void insereVendedorVetor(Vendedor vendedor) {
-		Vendedor  = vendedor;
+		vetVendedor[getCount()] = vendedor;
 	}
-
-	pesquisa
-	insere
-	remove
-	totalvendas
-	quantvendedor
-	mediavendas
-	tiraespaco
 }
