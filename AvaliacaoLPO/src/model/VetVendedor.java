@@ -14,16 +14,22 @@ public class VetVendedor {
 	public static int getNovaPosicao() {
 		int indice;
 		if (Constants.TAMANHO_VETOR == 0) {
-			return 0;
+			return -1;
 		}
+
+		if (vetVendedor[0] == null) {
+			return  0;
+		}
+
 		for (indice = 0; indice < (Constants.TAMANHO_VETOR - 1); indice++){
-			if (vetVendedor[indice].getNome().equals("")){
-				indice = indice + 1;
-			} else{
+			if (vetVendedor[indice] == null){
 				break;
 			}
 		}
-      		return indice + 1;
+		if ((indice + 1) <= Constants.TAMANHO_VETOR) {
+			return indice + 1;
+		}
+      	return -1;
 	}
 
 	public static void organizaVetor() {
@@ -40,11 +46,11 @@ public class VetVendedor {
 		vetVendedor = vetVendedorAux;
 	}
 
-	public static int getCount() {
-		return countVendedor;
+	public static void insereVendedorVetor(Vendedor vendedor, int indice) {
+		vetVendedor[indice] = vendedor;
 	}
 
-	public static void insereVendedorVetor(Vendedor vendedor) {
-		vetVendedor[getCount()] = vendedor;
+	public static int getCount() {
+		return countVendedor;
 	}
 }
