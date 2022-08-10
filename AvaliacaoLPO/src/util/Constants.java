@@ -15,5 +15,10 @@ public class Constants {
         public static final double MAIOR_DEZ_MIL = 15.0;
         public static final double MINIMO = 5.0;
     }
+
+    public static class TempoServico {
+        public static final double TEMPO_CAT_A = 60;
+        public static final double TEMPO_CAT_B = 30;
+    }
 }
 

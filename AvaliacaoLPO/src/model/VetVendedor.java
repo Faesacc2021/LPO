@@ -4,7 +4,7 @@ import util.Constants;
 
 public class VetVendedor {
 
-	private static Vendedor[] vetVendedor;
+	public static Vendedor[] vetVendedor;
 	private static int countVendedor;
 
 	public static void defineTamanhoVetor(){
@@ -12,7 +12,7 @@ public class VetVendedor {
 	}
 
 	public static int getNovaPosicao() {
-		int indice;
+		int indice = 0;
 		if (Constants.TAMANHO_VETOR == 0) {
 			return -1;
 		}
@@ -27,7 +27,7 @@ public class VetVendedor {
 			}
 		}
 		if ((indice + 1) <= Constants.TAMANHO_VETOR) {
-			return indice + 1;
+			return indice;
 		}
       	return -1;
 	}

@@ -5,13 +5,14 @@ import util.Constants;
 public class RegrasVendedor {
 
     public static void defineCategoria(Vendedor vendedor, int tempoServico) {
-        if (tempoServico > 60) {
+        if (tempoServico > Constants.TempoServico.TEMPO_CAT_A) {
             vendedor.setCategoria('A');
-        } else if (tempoServico > 30) {
+        } else if (tempoServico > Constants.TempoServico.TEMPO_CAT_B) {
             vendedor.setCategoria('B');
         } else {
             vendedor.setCategoria('C');
         }
+        vendedor.setTempoServico(tempoServico);
     }
 
     public static double getComissao(Vendedor vendedor) {
