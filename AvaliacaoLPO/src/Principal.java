@@ -32,15 +32,20 @@ public class Principal {
 			}
 
 			switch (valorMenu) {
-				case 0 -> {
+				case 0:{
 					System.out.println("Programa Encerrado ");
 					continuar = 0;
 				}
-				case 1 -> DadosVendedor.incluirVendedor();
-				case 2 -> DadosVendedor.consultaVendedor();
-				case 3 -> DadosVendedor.excluiVendedor();
-				case 4 -> OutrasOperacoes();
-				default -> System.out.println("Opção Inválida!");
+				case 1:
+					DadosVendedor.incluirVendedor();
+				case 2:
+					DadosVendedor.consultaVendedor();
+				case 3:
+					DadosVendedor.excluiVendedor();
+				case 4:
+					OutrasOperacoes();
+				default:
+					System.out.println("Opção Inválida!");
 			}
 		}
 	}
@@ -65,13 +70,16 @@ public class Principal {
 			}
 
 			switch (valorMenu) {
-				case 0 -> {
+				case 0:{
 					System.out.println("Programa Encerrado ");
 					continuar = 0;
 				}
-				case 1 -> DadosVendedor.totalVendas();
-				case 2 -> DadosVendedor.mediaVendas();
-				default -> System.out.println("Opção Inválida!");
+				case 1:
+					DadosVendedor.totalVendas();
+				case 2:
+					DadosVendedor.mediaVendas();
+				default:
+					System.out.println("Opção Inválida!");
 			}
 		}
 		menuVendedor();
