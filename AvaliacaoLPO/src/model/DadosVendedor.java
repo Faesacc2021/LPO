@@ -1,6 +1,6 @@
 package model;
+
 import business.RegrasVendedor;
-import util.Constants;
 
 import java.util.Scanner;
 
@@ -9,8 +9,6 @@ public class DadosVendedor {
     static Scanner ler = new Scanner(System.in);
 
     public static void incluirVendedor() {
-
-        ler = new Scanner(System.in);
 
         int posicao = VetVendedor.getNovaPosicao();
         if (posicao == -1) {
@@ -32,22 +30,7 @@ public class DadosVendedor {
     }
 
     public static void consultaVendedor() {
-        ler = new Scanner(System.in);
-        String nomeVendedor = "";
-        boolean found = false;
-        System.out.println("Digite o nome do Vendedor: ");
-        nomeVendedor = ler.nextLine();
-
-        for (int indice = 0; indice < (Constants.TAMANHO_VETOR - 1); indice++){
-            if (VetVendedor.vetVendedor[indice].getNome().equals(nomeVendedor)) {
-                System.out.println(VetVendedor.vetVendedor[indice].toString());
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("Vendedor não encontrado");
-        }
+        System.out.println("por vafor informe a nota de corte: ");
     }
 
     public static void excluiVendedor() {
