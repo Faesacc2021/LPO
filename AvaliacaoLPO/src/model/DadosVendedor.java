@@ -31,7 +31,6 @@ public class DadosVendedor {
 
     public static void consultaVendedor() {
         System.out.println("por vafor informe a nota de corte: ");
-        double nota = ler.nextDouble();
     }
 
     public static void excluiVendedor() {
