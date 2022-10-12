@@ -51,13 +51,12 @@ public class Principal {
                     OperacoesConta.realizarTransferencia();
                     break;
                 case 6:{
-                    System.out.println("Programa Encerrado ");
+                    System.out.println("########### Programa Encerrado ############");
                     System.exit(0);
                 }
                 default:
-                    System.out.println("Opção Inválida!");
+                    System.out.println("\n>>>>>> Opção Inválida! <<<<<<< \n");
             }
-            System.out.println("\n>>>>>> Quantidade de contas " + DataConta.quantidadeContas());
         }
     }
 }

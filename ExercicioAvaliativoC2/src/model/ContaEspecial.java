@@ -16,8 +16,8 @@ public class ContaEspecial extends Conta implements Transacao{
         super(numero, nome, cpf);
         this.limite = limite;
     }
-
-    public double saldoEspecial() {
-        return this.saldo() + getLimite();
+    @Override
+    public double saldo() {
+        return this.valorNaConta + limite;
     }
 }
