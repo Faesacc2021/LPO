@@ -9,15 +9,14 @@ public class Principal {
     static Scanner ler = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         movimentaConta();
     }
 
-    public static void movimentaConta() {
+    private static void movimentaConta() {
         String entrada = "";
         int valorMenu = 0;
 
-        while (valorMenu != 6) {
+        while (valorMenu != 7) {
 
             System.out.println("Escolha uma opção");
             System.out.println("1 - Cadastrar Conta");
@@ -25,7 +24,8 @@ public class Principal {
             System.out.println("3 - Saque");
             System.out.println("4 - Depósito");
             System.out.println("5 - Transferência");
-            System.out.println("6 - Sair");
+            System.out.println("6 - Lista Contas");
+            System.out.println("7 - Sair");
             entrada = ler.next();
 
             try {
@@ -50,7 +50,10 @@ public class Principal {
                 case 5:
                     OperacoesConta.realizarTransferencia();
                     break;
-                case 6:{
+                case 6:
+                    OperacoesConta.imprimeContas();
+                    break;
+                case 7:{
                     System.out.println("########### Programa Encerrado ############");
                     System.exit(0);
                 }

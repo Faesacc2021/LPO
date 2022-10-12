@@ -30,13 +30,7 @@ public class DataConta {
     }
 
     public static double saldoData(int index) {
-        double saldoAtual = 0.0;
-        if (contasData.get(index).getClass() == ContaEspecial.class) {
-            saldoAtual =  ((ContaEspecial) contasData.get(index)).saldo()  ;
-        } else {
-            saldoAtual = contasData.get(index).saldo();
-        }
-        return  saldoAtual;
+         return contasData.get(index).saldo()  ;
     }
 
     public static void depositoData (int index, double valor) {

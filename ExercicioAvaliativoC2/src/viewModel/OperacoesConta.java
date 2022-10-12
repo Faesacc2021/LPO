@@ -4,10 +4,8 @@ import data.DataConta;
 import model.Conta;
 import model.ContaEspecial;
 import util.ContaStrings;
-
 import java.text.NumberFormat;
 import java.util.Scanner;
-import java.util.logging.Formatter;
 
 public class OperacoesConta {
 
@@ -54,12 +52,11 @@ public class OperacoesConta {
         if (arrayPosition == -1) {
             return;
         }
-
         Conta conta = DataConta.getContasArray().get(arrayPosition);
         System.out.println(ContaStrings.CONTA_SALDO + conta.getNome() + " " + moedaMask(DataConta.saldoData(arrayPosition)) + "\n");
     }
 
-    public static String moedaMask (Double valor) {
+    private static String moedaMask (Double valor) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         return formatter.format(valor);
     }
@@ -95,7 +92,30 @@ public class OperacoesConta {
 
     }
 
-    public static int pedeContaAndChecaNoData() {
+    public static void imprimeContas() {
+        String isSpecial = "Sim";
+        for (Conta conta : DataConta.getContasArray()) {
+            if (conta.getClass() == ContaEspecial.class) {
+                isSpecial = "Sim - ";
+                System.out.println(ContaStrings.CONTA_SALDO
+                        + conta.getNome()
+                        + " - É Conta Especial? "
+                        + isSpecial
+                        + moedaMask(conta.saldo())
+                        + "  Limite especial somado ao Saldo : "
+                        + moedaMask(((ContaEspecial) conta).getLimite()));
+            }else {
+                isSpecial = "Não - ";
+                System.out.println(ContaStrings.CONTA_SALDO
+                        + conta.getNome()
+                        + " Conta Especial: "
+                        + isSpecial
+                        + moedaMask(conta.saldo()));
+            }
+        }
+    }
+
+    private static int pedeContaAndChecaNoData() {
         System.out.println(ContaStrings.CONTA_NUMERO);
         int numeroConta = ler.nextInt();
 

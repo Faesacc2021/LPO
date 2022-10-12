@@ -1,13 +1,11 @@
 package util;
 
 public class ContaStrings {
-
     public static final String CONTA_NUMERO = "Por favor, digite o NÚMERO da conta.";
     public static final String CONTA_NOME = "Por favor, digite o NOME da conta.";
     public static final String CONTA_CPF = "por favor, digite seu CPF.";
     public static final String CONTA_ESPECIAL = "Esta conta é ESPECIAL ? S/N";
     public static final String CONTA_LIMITE = "Informe o LIMITE ESPECIAL da conta.";
-
     public static final String SALDO_INSUFICIENTE = "\n>>>> Saldo INSUFICIENTE para saque. <<<<\n";
     public static final String SAQUE_REALIZADO = "\n>>>> Saque realizado com sucesso! <<<<\n";
     public static final String DEPOSITO_REALIZADO = "\n>>>> Depósito realizado com sucesso! <<<<\n";
