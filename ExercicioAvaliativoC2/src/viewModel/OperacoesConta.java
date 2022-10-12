@@ -93,23 +93,19 @@ public class OperacoesConta {
     }
 
     public static void imprimeContas() {
-        String isSpecial = "Sim";
         for (Conta conta : DataConta.getContasArray()) {
             if (conta.getClass() == ContaEspecial.class) {
-                isSpecial = "Sim - ";
                 System.out.println(ContaStrings.CONTA_SALDO
                         + conta.getNome()
-                        + " - É Conta Especial? "
-                        + isSpecial
+                        + " "
                         + moedaMask(conta.saldo())
-                        + "  Limite especial somado ao Saldo : "
+                        + " - Conta Especial - "
+                        + "Limite especial somado ao Saldo : "
                         + moedaMask(((ContaEspecial) conta).getLimite()));
             }else {
-                isSpecial = "Não - ";
                 System.out.println(ContaStrings.CONTA_SALDO
                         + conta.getNome()
-                        + " Conta Especial: "
-                        + isSpecial
+                        + " "
                         + moedaMask(conta.saldo()));
             }
         }
