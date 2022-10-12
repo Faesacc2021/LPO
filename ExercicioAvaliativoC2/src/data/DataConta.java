@@ -12,10 +12,6 @@ public class DataConta {
         contasData.add(conta);
     }
 
-    public static int quantidadeContasData() {
-        return  contasData.size();
-    }
-
     public static ArrayList<Conta> getContasArray() {
         return contasData;
     }
