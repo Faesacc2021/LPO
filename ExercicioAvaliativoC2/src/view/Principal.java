@@ -1,6 +1,7 @@
 package view;
 
 import data.DataConta;
+import util.ContaStrings;
 import viewModel.OperacoesConta;
 
 import java.util.Scanner;
@@ -31,34 +32,22 @@ public class Principal {
             try {
                 valorMenu = Integer.parseInt(entrada);
             } catch (NumberFormatException e) {
+                System.out.println(ContaStrings.NUMERO_VALIDO);
                 continue;
             }
 
             switch (valorMenu) {
-                case 1:
-                    OperacoesConta.cadastrar();
-                    break;
-                case 2:
-                    OperacoesConta.consultarSaldo();
-                    break;
-                case 3:
-                    OperacoesConta.realizarSaque();
-                    break;
-                case 4:
-                    OperacoesConta.realizarDeposito();
-                    break;
-                case 5:
-                    OperacoesConta.realizarTransferencia();
-                    break;
-                case 6:
-                    OperacoesConta.imprimeContas();
-                    break;
-                case 7:{
-                    System.out.println("########### Programa Encerrado ############");
+                case 1 -> OperacoesConta.cadastrar();
+                case 2 -> OperacoesConta.consultarSaldo();
+                case 3 -> OperacoesConta.realizarSaque();
+                case 4 -> OperacoesConta.realizarDeposito();
+                case 5 -> OperacoesConta.realizarTransferencia();
+                case 6 -> OperacoesConta.imprimeContas();
+                case 7 -> {
+                    System.out.println(ContaStrings.PROGRAMA_ENCERRADO);
                     System.exit(0);
                 }
-                default:
-                    System.out.println("\n>>>>>> Opção Inválida! <<<<<<< \n");
+                default -> System.out.println(ContaStrings.OPCAO_INVALIDA);
             }
         }
     }

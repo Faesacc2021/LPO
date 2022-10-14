@@ -108,11 +108,8 @@ public class OperacoesConta {
 
     public static void imprimeContas() {
         for (Conta conta : DataConta.getContasArray()) {
-            double usoLimite = 0.00;
             if (conta.getClass() == ContaEspecial.class) {
-                if (conta.saldo() < ((ContaEspecial) conta).getLimite()){
-                    usoLimite = ((ContaEspecial) conta).getLimite() - conta.saldo();
-                }
+               double usoLimite = calculaUsoLimite(conta);
                 System.out.println(ContaStrings.CONTA_SALDO
                         + conta.getNome()
                         + " "
@@ -130,6 +127,12 @@ public class OperacoesConta {
         }
     }
 
+    private static double calculaUsoLimite(Conta conta) {
+        if (conta.saldo() < ((ContaEspecial) conta).getLimite()){
+            return ((ContaEspecial) conta).getLimite() - conta.saldo();
+        }
+        return 0.00;
+    }
     private static int pedeContaAndChecaNoData(String message) {
         System.out.println(message);
         int numeroConta = ler.nextInt();

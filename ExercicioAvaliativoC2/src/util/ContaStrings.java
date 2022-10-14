@@ -1,6 +1,9 @@
 package util;
 
 public class ContaStrings {
+    public static final String PROGRAMA_ENCERRADO = "########### Programa Encerrado ############";
+    public static final String OPCAO_INVALIDA = "\n>>>>>> Opção Inválida! <<<<<<< \n";
+    public static final String NUMERO_VALIDO = "Por favor, digite um NÚMERO.";
     public static final String CONTA_NUMERO = "Por favor, digite o NÚMERO da conta.";
     public static final String CONTA_NOME = "Por favor, digite o NOME da conta.";
     public static final String CONTA_CPF = "por favor, digite seu CPF.";
