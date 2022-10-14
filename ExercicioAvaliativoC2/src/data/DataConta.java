@@ -6,7 +6,7 @@ import util.ContaStrings;
 import java.util.ArrayList;
 
 public class DataConta {
-    private static final ArrayList<Conta> contasData = new ArrayList<Conta>();
+    private static final ArrayList<Conta> contasData = new ArrayList<>();
 
     public static void incluiData(Conta conta) {
         contasData.add(conta);

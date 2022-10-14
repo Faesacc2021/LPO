@@ -4,6 +4,8 @@ import data.DataConta;
 import model.Conta;
 import model.ContaEspecial;
 import util.ContaStrings;
+import util.ValidNumber;
+
 import java.text.NumberFormat;
 import java.util.Scanner;
 
@@ -16,9 +18,7 @@ public class OperacoesConta {
         double limite;
         String nome, cpf, especial;
 
-        System.out.println(ContaStrings.CONTA_NUMERO);
-        numero = ler.nextInt();
-        ler.nextLine();
+        numero = ValidNumber.checkInt(ContaStrings.CONTA_NUMERO);
 
         if (DataConta.consultaData(numero) != -1) {
             System.out.println(ContaStrings.CONTA_EXISTENTE);
@@ -35,8 +35,7 @@ public class OperacoesConta {
         especial = ler.nextLine();
 
         if (especial.equals("S") || especial.equals("s")) {
-            System.out.println(ContaStrings.CONTA_LIMITE);
-            limite = ler.nextDouble();
+            limite = ValidNumber.checkDouble(ContaStrings.CONTA_LIMITE);
             DataConta.incluiData(new ContaEspecial(numero, nome, cpf, limite));
         } else {
             DataConta.incluiData(new Conta(numero, nome, cpf));
@@ -63,8 +62,8 @@ public class OperacoesConta {
         if (arrayPosition == -1) {
             return;
         }
-        System.out.println(ContaStrings.CONTA_VALOR_SAQUE);
-        double valorSaque = ler.nextDouble();
+
+        double valorSaque = ValidNumber.checkDouble(ContaStrings.CONTA_VALOR_SAQUE);
 
         if (DataConta.saqueData(arrayPosition, valorSaque)) {
             System.out.println(ContaStrings.SAQUE_REALIZADO);
@@ -78,8 +77,7 @@ public class OperacoesConta {
         if (arrayPosition == -1) {
             return;
         }
-        System.out.println(ContaStrings.CONTA_DEPOSITO);
-        double valorSaque = ler.nextDouble();
+        double valorSaque =  ValidNumber.checkDouble(ContaStrings.CONTA_DEPOSITO);
 
         DataConta.depositoData(arrayPosition, valorSaque);
         System.out.println(ContaStrings.DEPOSITO_REALIZADO);
@@ -96,8 +94,7 @@ public class OperacoesConta {
             return;
         }
 
-        System.out.println(ContaStrings.VALOR_TRANSFERENCIA);
-        double valorTransferencia = ler.nextDouble();
+        double valorTransferencia = ValidNumber.checkDouble(ContaStrings.VALOR_TRANSFERENCIA);
 
         if (DataConta.transferenciaData(arrayPositionOrigem, arrayPositionDestino, valorTransferencia)){
             System.out.println(ContaStrings.TRANSFERENCIA_REALIZADA);
@@ -111,6 +108,9 @@ public class OperacoesConta {
             if (conta.getClass() == ContaEspecial.class) {
                double usoLimite = calculaUsoLimite(conta);
                 System.out.println(ContaStrings.CONTA_SALDO
+                        + "Nº "
+                        + conta.getNumero()
+                        + " "
                         + conta.getNome()
                         + " "
                         + moedaMask(conta.saldo())
@@ -120,6 +120,9 @@ public class OperacoesConta {
                         + moedaMask(usoLimite));
             }else {
                 System.out.println(ContaStrings.CONTA_SALDO
+                        + "Nº "
+                        + conta.getNumero()
+                        + " "
                         + conta.getNome()
                         + " "
                         + moedaMask(conta.saldo()));
@@ -133,10 +136,9 @@ public class OperacoesConta {
         }
         return 0.00;
     }
-    private static int pedeContaAndChecaNoData(String message) {
-        System.out.println(message);
-        int numeroConta = ler.nextInt();
 
+    private static int pedeContaAndChecaNoData(String message) {
+        int numeroConta = ValidNumber.checkInt(message);
         int arrayPosition = DataConta.consultaData(numeroConta);
         if (arrayPosition == -1) {
             System.out.println(ContaStrings.CONTA_INEXISTENTE);

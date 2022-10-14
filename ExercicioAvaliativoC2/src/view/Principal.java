@@ -1,6 +1,5 @@
 package view;
 
-import data.DataConta;
 import util.ContaStrings;
 import viewModel.OperacoesConta;
 
@@ -19,7 +18,7 @@ public class Principal {
 
         while (valorMenu != 7) {
 
-            System.out.println("Escolha uma opção");
+            System.out.println("\nEscolha uma opção");
             System.out.println("1 - Cadastrar Conta");
             System.out.println("2 - Saldo");
             System.out.println("3 - Saque");

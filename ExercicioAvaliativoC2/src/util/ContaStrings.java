@@ -15,12 +15,11 @@ public class ContaStrings {
     public static final String CONTA_EXISTENTE = "\n>>>> Esta conta JÁ EXISTE, informe outro número por favor. <<<<\n";
     public static final String CONTA_INEXISTENTE = "\n>>>> Conta não encontrada. <<<<\n";
     public static final String CONTA_CADASTRADA = "\n>>>> Conta cadastrada com sucesso! <<<<\n";
-    public static final String CONTA_SALDO = "\n=====> Saldo da conta ";
+    public static final String CONTA_SALDO = "\n===> Saldo da conta ";
     public static final String CONTA_VALOR_SAQUE = "Qual o valor que deseja SACAR? ";
     public static final String CONTA_DEPOSITO = "Qual o valor que deseja DEPOSITAR? ";
     public static final String CONTA_ORIGEM = "Qual o número da conta de ORIGEM? ";
     public static final String CONTA_DESTINO = "Qual o número da conta DESTINO? ";
     public static final String VALOR_TRANSFERENCIA = "Qual o valor que deseja transferir? ";
     public static final String TRANSFERENCIA_REALIZADA = "\n>>>> Transferencia realizada com sucesso!";
-
 }
