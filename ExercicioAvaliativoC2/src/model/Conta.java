@@ -59,6 +59,12 @@ public class Conta implements Transacao {
 
     @Override
     public boolean transferencia(double valor, Conta outraConta) {
-        return false;
+        if (this.saldo() < valor) {
+            return false;
+        } else {
+            this.saque(valor);
+            outraConta.deposito(valor);
+        }
+        return true;
     }
 }

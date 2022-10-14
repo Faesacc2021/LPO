@@ -20,4 +20,15 @@ public class ContaEspecial extends Conta implements Transacao{
     public double saldo() {
         return this.valorNaConta + limite;
     }
+
+    @Override
+    public boolean transferencia(double valor, Conta outraConta) {
+        if (this.saldo() < valor) {
+            return false;
+        } else {
+            this.saque(valor);
+            outraConta.deposito(valor);
+        }
+        return true;
+    }
 }

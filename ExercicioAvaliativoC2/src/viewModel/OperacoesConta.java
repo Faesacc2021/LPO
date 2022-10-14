@@ -9,15 +9,12 @@ import java.util.Scanner;
 
 public class OperacoesConta {
 
-    static Scanner ler = new Scanner(System.in);
+    private static final Scanner ler = new Scanner(System.in);
 
     public static void cadastrar() {
-
         int numero;
         double limite;
-        String nome;
-        String cpf;
-        String especial;
+        String nome, cpf, especial;
 
         System.out.println(ContaStrings.CONTA_NUMERO);
         numero = ler.nextInt();
@@ -48,7 +45,7 @@ public class OperacoesConta {
     }
 
     public static void consultarSaldo() {
-        int arrayPosition = pedeContaAndChecaNoData();
+        int arrayPosition = pedeContaAndChecaNoData(ContaStrings.CONTA_NUMERO);
         if (arrayPosition == -1) {
             return;
         }
@@ -62,7 +59,7 @@ public class OperacoesConta {
     }
 
     public static void realizarSaque() {
-        int arrayPosition = pedeContaAndChecaNoData();
+        int arrayPosition = pedeContaAndChecaNoData(ContaStrings.CONTA_NUMERO);
         if (arrayPosition == -1) {
             return;
         }
@@ -77,7 +74,7 @@ public class OperacoesConta {
    }
 
     public static void realizarDeposito() {
-        int arrayPosition = pedeContaAndChecaNoData();
+        int arrayPosition = pedeContaAndChecaNoData(ContaStrings.CONTA_NUMERO);
         if (arrayPosition == -1) {
             return;
         }
@@ -89,19 +86,41 @@ public class OperacoesConta {
     }
 
     public static void realizarTransferencia() {
+        int arrayPositionOrigem = pedeContaAndChecaNoData(ContaStrings.CONTA_ORIGEM);
+        if (arrayPositionOrigem == -1) {
+            return;
+        }
 
+        int arrayPositionDestino = pedeContaAndChecaNoData(ContaStrings.CONTA_DESTINO);
+        if (arrayPositionDestino == -1) {
+            return;
+        }
+
+        System.out.println(ContaStrings.VALOR_TRANSFERENCIA);
+        double valorTransferencia = ler.nextDouble();
+
+        if (DataConta.transferenciaData(arrayPositionOrigem, arrayPositionDestino, valorTransferencia)){
+            System.out.println(ContaStrings.TRANSFERENCIA_REALIZADA);
+        }else {
+            System.out.println(ContaStrings.SALDO_INSUFICIENTE);
+        }
     }
 
     public static void imprimeContas() {
         for (Conta conta : DataConta.getContasArray()) {
+            double usoLimite = 0.00;
             if (conta.getClass() == ContaEspecial.class) {
+                if (conta.saldo() < ((ContaEspecial) conta).getLimite()){
+                    usoLimite = ((ContaEspecial) conta).getLimite() - conta.saldo();
+                }
                 System.out.println(ContaStrings.CONTA_SALDO
                         + conta.getNome()
                         + " "
                         + moedaMask(conta.saldo())
-                        + " - Conta Especial - "
-                        + "Limite especial somado ao Saldo : "
-                        + moedaMask(((ContaEspecial) conta).getLimite()));
+                        + " - Limite especial : "
+                        + moedaMask(((ContaEspecial) conta).getLimite())
+                        + " - Uso do Limite : "
+                        + moedaMask(usoLimite));
             }else {
                 System.out.println(ContaStrings.CONTA_SALDO
                         + conta.getNome()
@@ -111,8 +130,8 @@ public class OperacoesConta {
         }
     }
 
-    private static int pedeContaAndChecaNoData() {
-        System.out.println(ContaStrings.CONTA_NUMERO);
+    private static int pedeContaAndChecaNoData(String message) {
+        System.out.println(message);
         int numeroConta = ler.nextInt();
 
         int arrayPosition = DataConta.consultaData(numeroConta);

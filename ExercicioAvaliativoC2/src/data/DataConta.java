@@ -41,4 +41,8 @@ public class DataConta {
             return true;
         }
     }
+
+    public static boolean transferenciaData(int indexOrigem, int indexDestino, Double valorTransferencia){
+        return contasData.get(indexOrigem).transferencia(valorTransferencia, contasData.get(indexDestino));
+    }
 }
